@@ -3,5 +3,5 @@
 
 _project overview_:
 
-+ Custom User model
++ Custom User model inherited from AbstractBaseUser
 
