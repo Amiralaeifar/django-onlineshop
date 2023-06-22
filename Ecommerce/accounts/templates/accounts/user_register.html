@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <form action="" method="post">
+    <form action="" method="post" novalidate>
         {% csrf_token %} 
         {{ form.as_div }} 
         <input type="submit" value="register">

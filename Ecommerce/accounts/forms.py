@@ -51,11 +51,18 @@ class UsreRegistrationForm(forms.Form):
     
     
     def clean_email(self):
-        cd = self.cleaned_data['email']
-        user = User.objects.filter(email=cd).exists()
+        email = self.cleaned_data['email']
+        user = User.objects.filter(email=email).exists()
         if user:
             raise ValidationError('this email has already been taken')
-        return cd
+        return email
+    
+    def clean_phone_number(self):
+        phone = self.cleaned_data['phone_number']
+        user = User.objects.filter(phone_number=phone).exists()
+        if user:
+            raise ValidationError('this phone number already exists')
+        return phone
     
 
 class UserVerifyCodeForm(forms.Form):

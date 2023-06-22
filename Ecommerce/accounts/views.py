@@ -9,9 +9,10 @@ from django.contrib import messages
 
 class UserRegisterView(View):
     form_class = UsreRegistrationForm
+    template_name = 'accounts/user_register.html'
     
     def get(self, request):
-        return render(request, 'accounts/user_register.html', {
+        return render(request, self.template_name, {
             'form': self.form_class ,
         })
     
@@ -31,7 +32,9 @@ class UserRegisterView(View):
             }
             messages.success(request,'we sent you a code', 'success')
             return redirect('accounts:verify_code')
-        return redirect('home:home')
+        return render(request, self.template_name, {
+            'form': form
+        })
     
     
 class UserRegisterVerifyCodeView(View):
