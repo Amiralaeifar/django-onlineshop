@@ -48,6 +48,20 @@ class UsreRegistrationForm(forms.Form):
         if cd['password1'] and cd['password2'] and cd['password1'] != cd['password2']:
             raise ValidationError('password must match')
         return cd['password2']
+    
+    
+    def clean_email(self):
+        cd = self.cleaned_data['email']
+        user = User.objects.filter(email=cd).exists()
+        if user:
+            raise ValidationError('this email has already been taken')
+        return cd
+    
+
+class UserVerifyCodeForm(forms.Form):
+    code = forms.IntegerField()
+    
+    
      
         
     
