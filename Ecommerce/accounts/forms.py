@@ -43,3 +43,12 @@ class UsreRegistrationForm(forms.Form):
     password2 = forms.CharField(label='confirm password', widget=forms.PasswordInput)
     
     
+    def clean_password2(self):
+        cd = self.cleaned_data
+        if cd['password1'] and cd['password2'] and cd['password1'] != cd['password2']:
+            raise ValidationError('password must match')
+        return cd['password2']
+     
+        
+    
+    
