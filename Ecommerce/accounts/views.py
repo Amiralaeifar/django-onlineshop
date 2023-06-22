@@ -1,3 +1,16 @@
 from django.shortcuts import render
+from .forms import UsreRegistrationForm
+from django.views import View
 
-# Create your views here.
+
+class UserRegisterView(View):
+    form_class = UsreRegistrationForm
+    
+    def get(self, request):
+        return render(request, 'accounts/user_register.html', {
+            'form': self.form_class ,
+        })
+    
+    
+    def post(self, request):
+        pass

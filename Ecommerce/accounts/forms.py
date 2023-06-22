@@ -33,3 +33,13 @@ class UserChangeForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('phone_number', 'email', 'full_name', 'password', 'last_login')
+        
+        
+class UsreRegistrationForm(forms.Form):
+    full_name = forms.CharField(max_length=255)
+    email = forms.EmailField()
+    phone_number = forms.CharField(max_length=11)
+    password1 = forms.CharField(label='password', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='confirm password', widget=forms.PasswordInput)
+    
+    
