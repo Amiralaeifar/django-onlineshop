@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     # my apps 
     'accounts.apps.AccountsConfig',
     'home.apps.HomeConfig',
+    
+    # django-storages and buckets
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -130,3 +133,14 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.User'
+
+
+# ARVAN Cloud
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = '69efc2d8-73dc-4d1d-87e0-e47742f3593a'
+AWS_SECRET_ACCESS_KEY = 'f003a4ddf98d5db27a7374a87cff18b27d2a8da322d375fadf0eaa8fa2ce0ab0'
+AWS_S3_ENDPOINT_URL = 'https://s3.ir-thr-at1.arvanstorage.ir'
+AWS_STORAGE_BUCKET_NAME = 'onlineshop-amiralaeifar'
+AWS_SERVICE_NAME = 's3'
+AWS_S3_FILE_OVERWRITE = False
+AWS_LOCAL_STORAGE = f'{BASE_DIR}/aws/'
