@@ -8,5 +8,15 @@
 
 
 {% block content %}
-<h1>Hello user</h1>
+
+{% for product in products %}
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{product.image.url}}" alt="Card image cap">
+        <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.description }}</p>
+        <a href="{{ product.get_absolute.url }}" class="btn btn-primary">Detial</a>
+        </div>
+    </div>
+{% endfor %}
 {% endblock %}
