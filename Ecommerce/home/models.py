@@ -33,7 +33,7 @@ class Product(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse("home:prodcut_detail", args=[self.slug,])
+        return reverse("home:product_detail", args=[self.slug,])
     
     
     
