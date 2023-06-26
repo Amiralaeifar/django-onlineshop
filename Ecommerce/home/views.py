@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from .models import Product
-from .tasks import get_objects_tasks
 from . import tasks
 
 
@@ -28,7 +27,9 @@ class BucketHome(View):
     
     
     def get(self, request):
-        objects = tasks.get_objects_tasks()
+        objects = tasks.get_obj_list_task()
+        print('='*90)
+        print(objects)
         return render(request, self.template_name, {
             'objects': objects,
         })

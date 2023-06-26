@@ -14,10 +14,9 @@ class Bucket:
             aws_access_key_id = settings.AWS_ACCESS_KEY_ID,
             aws_secret_access_key = settings.AWS_SECRET_ACCESS_KEY,
         )
-<<<<<<< HEAD
-            
-=======
->>>>>>> bucketv1
+        self.bucket_name = settings.AWS_STORAGE_BUCKET_NAME
+        self.bucket = self.s3_resource.Bucket(self.bucket_name)
+        
         """   
         try:
             bucket_name = settings.AWS_STORAGE_BUCKET_NAME
@@ -26,12 +25,17 @@ class Bucket:
             
         except ClientError as exc:
             logging.error(exc)
-            """
+        """
     
     def get_objects(self):
-        for bucket in self.s3_resource.buckets.all():
-            return bucket
-        
+        objects = self.bucket.objects.all()
+        return objects
+    
+    def get_object_list(self):
+        l = []
+        for obj in self.bucket.objects.all():
+            l.append(obj)
+        return l
         
         
 bucket = Bucket()
