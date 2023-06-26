@@ -49,3 +49,13 @@ class BucketDownloadObject(View):
         messages.success(request, 'downloaded successfully', 'success')
         return redirect('home:bucket')
         
+'''
+TODO:
+
+class BucketUploadView(View):
+    
+    def get(self, request, object_key):
+        tasks.upload_object_task(object_key)
+        messages.success(request, 'uploaded successfully', 'success')
+        return redirect('home:bucket')
+'''

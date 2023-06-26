@@ -14,6 +14,7 @@
         <th scope="col">Size</th>
         <th scope="col">Download</th>
         <th scope="col">Delete</th>
+        <th scope="col">Upload</th>
       </tr>
     </thead>
     
@@ -25,6 +26,9 @@
         <td>{{ object.size|filesizeformat }}</td>
         <td><a href="{% url 'home:bucket_download_object' object.key %}">Download</a></td>
         <td><a href="{% url 'home:bucket_delete_object' object.key %}">Delete</a></td>
+        {% comment %}
+        <td><a href="{% url 'home:bucket_upload_object' object.key %}">Upload</a></td>
+        {% endcomment %}
       </tr>
       {% endfor %}
     </tbody>

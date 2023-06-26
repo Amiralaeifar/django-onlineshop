@@ -13,3 +13,10 @@ def delete_object_task(object_key):
 # @shared_task
 def download_object_task(object_key):
     bucket.download_object(object_key)
+    
+'''
+TODO:
+
+def upload_object_task(object_key):
+    bucket.upload_objects(object_key)
+'''
