@@ -29,8 +29,6 @@ class BucketHome(View):
     
     def get(self, request):
         objects = tasks.get_obj_list_task()
-        print('='*90)
-        print(objects)
         return render(request, self.template_name, {
             'objects': objects,
         })
@@ -39,7 +37,7 @@ class BucketHome(View):
 class BucketDeleteObject(View):
     
     def get(self, request, object_key):
-        tasks.delete_object_task(object_key)
+        tasks.delete_object_task.delay(object_key)
         messages.success(request, 'deleted successfully', 'success')
         return redirect('home:bucket')
         
