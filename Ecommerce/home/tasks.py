@@ -1,15 +1,11 @@
 from bucket import bucket 
-
-
-
-def get_objects_task():
-    result = bucket.get_objects()
-    return result
-
+from celery import shared_task
 
 def get_obj_list_task():
     result = bucket.get_object_list()
     return result
 
 
-
+# @shared_task
+def delete_object_task(object_key):
+    bucket.delete_object(object_key)

@@ -7,7 +7,7 @@ os.environ.setdefault('DJNAGO_SETTINGS_MODULE', 'Ecommerce.settings')
 celery_app = Celery('Ecommerce')
 celery_app.autodiscover_tasks()
 
-celery_app.conf.broker_url = 'rmqp://rabbitmq'
+celery_app.conf.broker_url = 'amqp://rabbitmq'
 celery_app.conf.result_backend = 'rpc://'
 celery_app.conf.task_serializer = 'json'
 celery_app.conf.resault_serializer = 'pickle'
