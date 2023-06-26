@@ -5,7 +5,8 @@ app_name = 'home'
 
 bucket_urls = [
     path('', views.BucketHome.as_view(), name='bucket'),
-    path('delete_obj_bucket/<object_key>', views.BucketDeleteObject.as_view(), name='bucket_delete_object'),
+    path('delete_obj_bucket/<str:object_key>', views.BucketDeleteObject.as_view(), name='bucket_delete_object'),
+    path('download_obj_bucket/<str:object_key>', views.BucketDownloadObject.as_view(), name="bucket_download_object"),
 ]
 
 urlpatterns = [

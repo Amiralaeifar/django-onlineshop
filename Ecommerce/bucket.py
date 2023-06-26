@@ -42,6 +42,9 @@ class Bucket:
         object = self.bucket.Object(object_key)
         object.delete()
         return True
+    
+    def download_object(self, object_key):
+        self.bucket.download_file(object_key, settings.AWS_LOCAL_STORAGE + object_key)
         
 bucket = Bucket()
         
