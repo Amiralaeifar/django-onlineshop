@@ -12,7 +12,7 @@ _project overview_:
 + managing bucket contents __(list objects, delete and download)__ with boto3 SDK
 + personalized management command
 + receiving aware datetime in commands, using pytz module
-+ celrey beat for asynchronous tasks
++ celery beat for asynchronous tasks
 
 
 
