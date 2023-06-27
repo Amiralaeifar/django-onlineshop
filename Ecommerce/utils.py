@@ -12,10 +12,10 @@ def send_otp_code(phone_number, code):
         response = api.sms_send(params)
         
     except APIException as e:
-        print(e.decode('utf-8'))
+        print(e)
         
     except HTTPException as e:
-        print(e.decode('utf-8'))
+        print(e)
     
 
 class IsAdminMixins(UserPassesTestMixin):
