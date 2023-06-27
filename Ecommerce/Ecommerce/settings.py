@@ -38,12 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    # my apps 
+    # Local apps
     'accounts.apps.AccountsConfig',
     'home.apps.HomeConfig',
     
-    # django-storages and buckets
-    'storages'
+    # Third-party apps 
+    'storages',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [

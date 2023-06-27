@@ -1,8 +1,9 @@
 from celery import Celery
 from datetime import timedelta
-import os 
+import os
 
 os.environ.setdefault('DJNAGO_SETTINGS_MODULE', 'Ecommerce.settings')
+
 
 celery_app = Celery('Ecommerce')
 celery_app.autodiscover_tasks()
