@@ -7,6 +7,8 @@ _project overview_:
 + Personalizing admin panel fieldsets and forms
 + cleaned out email and phone_number to be unique
 + verify users via sms using Kavenegar API
-+ managing media files in buckets using ARVAN Cloud Storages 
++ managing media files in buckets using ARVAN Cloud Storages
++ AWS Service __s3_simple storage service__
++ managing bucket contents __list objects, delete and download__ with boto3 SDK
 
 
