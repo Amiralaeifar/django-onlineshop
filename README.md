@@ -11,5 +11,8 @@ _project overview_:
 + AWS Service __s3_simple storage service__
 + managing bucket contents __(list objects, delete and download)__ with boto3 SDK
 + personalized management command
++ receiving aware datetime in commands, using pytz module
+
+
 
 
