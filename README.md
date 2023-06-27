@@ -9,6 +9,6 @@ _project overview_:
 + verify users via sms using Kavenegar API
 + managing media files in buckets using ARVAN Cloud Storages
 + AWS Service __s3_simple storage service__
-+ managing bucket contents __list objects, delete and download__ with boto3 SDK
++ managing bucket contents __(list objects, delete and download)__ with boto3 SDK
 
 
