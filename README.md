@@ -14,6 +14,7 @@ _project overview_:
 + receiving aware datetime in commands, using pytz module
 + celery beat for asynchronous tasks
 + __daemonization__ using _supervisor_ for celery and celery_beat
++ __bootstrap__ on templates
 
 
 
