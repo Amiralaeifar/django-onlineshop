@@ -1,0 +1,31 @@
+1. install supervisor 
+    >>>sudo apt-get install supervisor
+
+2. supervisor configuration.
+    as usuall, config files on linux are in /etc 
+    >>>etc/supervisor/conf.d 
+
+3. project's celery configuration file for supervisor
+    >>>touch etc/supervisor/conf.d/Ecommerce.conf 
+
+4. write supervisor configuratoin on Ecommerce.conf
+
+    [program:Ecommerce]
+    user=amiralaeifar
+    directory=/home/amiralaeifar/Desktop/django/venv/celery -A worker -l INFO # celery file on virtualenvironment 
+    numprocs=1  # how many worker do you need to be executed.
+    autostart=true 
+    autorestart=true 
+    stdout_logfile=/var/log/Ecommerce/celery_out.log 
+    stderr_logfile=/var/log/Ecommerce/celery_err.log 
+
+5. create logfiles , as ussuall log file are in var/log/
+    >>>touch var/log/Ecommerce/celery_out.log 
+    >>>touch var/log/Ecommerce/celery_err.log 
+
+6.update supervisor configuration 
+    >>>supervisorctl reread 
+    >>>supervisorctl update 
+
+7. check supervisor status , start or stop it.  
+    >>>supervisorctl {status|start|stop|restart} Ecommerce
