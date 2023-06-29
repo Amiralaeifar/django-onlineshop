@@ -4,6 +4,7 @@ from .models import Product, Category
 from . import tasks
 from django.contrib import messages
 from utils import IsAdminMixins
+from orders.forms import CardAddForm
 
 
 class HomeView(View):
@@ -23,9 +24,11 @@ class HomeView(View):
 class ProductDetailView(View):
     
     def get(self, request, slug):
+        form = CardAddForm
         product = get_object_or_404(Product, slug=slug)
         return render(request, 'home/detail.html', {
             'product': product,
+            'form': form,
         })
         
         
