@@ -3,7 +3,7 @@
 
 _project overview_:
 
-+ Custom User model inherited from AbstractBaseUser plus Custom UserManager inherited from BaseUserManager
++ Custom User model & Custom manager
 + Personalizing admin panel fieldsets and forms
 + cleaned out email and phone_number to be unique
 + verify users via sms using Kavenegar API
