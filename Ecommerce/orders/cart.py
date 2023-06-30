@@ -21,6 +21,18 @@ class Cart:
         self.cart[product_id]['quantity'] += quantity
         self.save()
         
+    
+    def remove(self, product):
+        product_id = str(product.id)
+        if product_id in self.cart:
+            del self.cart[product_id]
+            self.save()   
+            
+            
+    def remove_all(self):
+        self.cart.clear()
+        self.save()
+        
         
     def __iter__(self):
         product_id = self.cart.keys()
