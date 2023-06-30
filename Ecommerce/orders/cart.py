@@ -1,3 +1,5 @@
+from home.models import Product
+
 
 CART_SESSION_ID = 'cart'
 
@@ -14,10 +16,22 @@ class Cart:
         
     def add(self, product, quantity):
         product_id = str(product.id)
-        if product not in self.card:
-            self.card[product_id] = {'quantity': 0, 'price': str(product.price)}
-        self.card[product_id]['quantity'] += quantity
+        if product_id not in self.cart:
+            self.cart[product_id] = {'quantity': 0, 'price': product.price}
+        self.cart[product_id]['quantity'] += quantity
         self.save()
+        
+        
+    def __iter__(self):
+        product_id = self.cart.keys()
+        products = Product.objects.filter(id__in=product_id)
+        cart = self.cart.copy()
+        for product in products:
+            cart[str(product.id)]['product'] = product
+            
+        for item in cart.values():
+            item['total_price'] = item['price'] * item['quantity']
+            yield item 
         
         
     def save(self):
