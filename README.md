@@ -15,7 +15,7 @@ _project overview_:
 + celery beat for asynchronous tasks
 + __daemonization__ using _supervisor_ for celery and celery_beat
 + __bootstrap__ in templates
-+ __cart__ , the ability of adding or removig product to cart, eaily purchase it
++ __cart__ , the ability of adding or removig product to cart, easy purchase
 + __context processors__ in orders
 
 
