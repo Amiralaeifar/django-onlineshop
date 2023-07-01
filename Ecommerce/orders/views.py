@@ -84,7 +84,7 @@ class OrderPayView(LoginRequiredMixin, View):
 		}
 		req_data = {
 			"merchant_id": MERCHANT,
-			"amount": order.get_total_price(), # Rial
+			"amount": order.total_price(), # Rial
 			"callback_url": CallbackURL,
 			"description": description,
 			"metadata": {"mobile": request.user.phone_number, "email": request.user.email}
