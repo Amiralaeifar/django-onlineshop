@@ -17,6 +17,7 @@ _project overview_:
 + __bootstrap__ in templates
 + __cart__ , the ability of adding or removig product to cart, easy purchase
 + __context processors__ in orders
++ payments with __Zarinpal__ for orders
 
 
 
