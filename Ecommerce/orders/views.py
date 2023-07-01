@@ -3,6 +3,8 @@ from django.views import View
 from .cart import Cart
 from .forms import CardAddForm
 from home.models import Product
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import Order, OrderItem
 
 class CartView(View):
     
@@ -39,3 +41,24 @@ class CartRemoveAllView(View):
         cart = Cart(request)
         cart.remove_all()
         return redirect('orders:cart')
+    
+
+class OrderCreateView(LoginRequiredMixin, View):
+    
+    def get(self, request):
+        cart = Cart(request)
+        order = Order.objects.create(user=request.user)
+        for item in cart:
+            OrderItem.objects.create(order=order, product=item['product'], price=item['price'], quantity=item['quantity'])
+        cart.remove_all()
+        return redirect('orders:order_detail', order.id)
+    
+    
+class OrderDetailView(LoginRequiredMixin, View):
+    
+    def get(self, request, order_id):
+        order = get_object_or_404(Order, id=order_id)
+        return render(request, 'orders/order.html', {
+            'order': order, 
+        })
+        
