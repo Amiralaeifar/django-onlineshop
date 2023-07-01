@@ -5,6 +5,11 @@ from .forms import CardAddForm
 from home.models import Product
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Order, OrderItem
+import requests
+from django.http import HttpResponse
+import json
+
+
 
 class CartView(View):
     
@@ -61,4 +66,38 @@ class OrderDetailView(LoginRequiredMixin, View):
         return render(request, 'orders/order.html', {
             'order': order, 
         })
+        
+        
+        
+MERCHANT = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX' #Secret :) 
+ZP_API_REQUEST = "https://api.zarinpal.com/pg/v4/payment/request.json"
+ZP_API_VERIFY = "https://api.zarinpal.com/pg/v4/payment/verify.json"
+ZP_API_STARTPAY = "https://www.zarinpal.com/pg/StartPay/{authority}"
+description = "توضیحات مربوط به تراکنش را در این قسمت وارد کنید"
+CallbackURL = 'http://127.0.0.1:8000/orders/verify/'
+
+class OrderPayView(LoginRequiredMixin, View):
+	def get(self, request, order_id):
+		order = Order.objects.get(id=order_id)
+		request.session['order_pay'] = {
+			'order_id': order.id,
+		}
+		req_data = {
+			"merchant_id": MERCHANT,
+			"amount": order.get_total_price(), # Rial
+			"callback_url": CallbackURL,
+			"description": description,
+			"metadata": {"mobile": request.user.phone_number, "email": request.user.email}
+		}
+		req_header = {"accept": "application/json",
+					  "content-type": "application/json'"}
+		req = requests.post(url=ZP_API_REQUEST, data=json.dumps(
+			req_data), headers=req_header)
+		authority = req.json()['data']['authority']
+		if len(req.json()['errors']) == 0:
+			return redirect(ZP_API_STARTPAY.format(authority=authority))
+		else:
+			e_code = req.json()['errors']['code']
+			e_message = req.json()['errors']['message']
+			return HttpResponse(f"Error code: {e_code}, Error Message: {e_message}")
         
