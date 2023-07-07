@@ -86,6 +86,7 @@ class CouponApplyView(LoginRequiredMixin, View):
                 return redirect('orders:order_detail', order_id)
             order = Order.objects.get(id=order_id)
             order.discount = coupon.discount
+            coupon.delete()
             order.save()
             return redirect('orders:order_detail', order_id)
         
