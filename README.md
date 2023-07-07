@@ -16,9 +16,12 @@ _project overview_:
 + __daemonization__ using _supervisor_ for celery and celery_beat
 + __bootstrap__ in templates
 + __cart__ , the ability of adding or removig product to cart, easy purchase
++ set __permissions__ for orders
 + __context processors__ in orders
 + payments with __Zarinpal__ for orders
 + __discount coupon__ and field lookups
++ override *get_form* func for admin panel
+
 
 
 

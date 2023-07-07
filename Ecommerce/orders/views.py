@@ -3,7 +3,7 @@ from django.views import View
 from .cart import Cart
 from .forms import CardAddForm, CouponApplyForm
 from home.models import Product
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from .models import Order, OrderItem, Coupon
 import requests
 from django.http import HttpResponse
@@ -21,7 +21,8 @@ class CartView(View):
         })
     
     
-class CartAddView(View):
+class CartAddView(PermissionRequiredMixin, View):
+    permission_required = ('order.add_order')
     
     def post(self, request, product_id):
         cart = Cart(request)

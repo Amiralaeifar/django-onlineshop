@@ -29,7 +29,6 @@ class User(AbstractBaseUser):
         return self.is_admin
     
     
-    
 class OtpCode(models.Model):
     phone_number = models.CharField(max_length=11)
     code = models.PositiveSmallIntegerField()
