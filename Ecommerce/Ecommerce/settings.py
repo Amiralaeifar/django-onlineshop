@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # Third-party apps 
     'storages',
     'django_celery_beat',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -160,3 +161,11 @@ AWS_STORAGE_BUCKET_NAME = 'onlineshop-amiralaeifar'
 AWS_SERVICE_NAME = 's3'
 AWS_S3_FILE_OVERWRITE = False
 AWS_LOCAL_STORAGE = f'{BASE_DIR}/aws/'
+
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    },
+}
