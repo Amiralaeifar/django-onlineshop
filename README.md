@@ -22,6 +22,7 @@ _project overview_:
 + __discount coupon__ and field lookups
 + override *get_form* func for admin panel
 + cache system with __Redis__ 
++ __ckeditor__ for description on product, manual setup with full toolbar
 
 
 
