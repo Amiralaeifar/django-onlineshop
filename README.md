@@ -18,6 +18,7 @@ _project overview_:
 + __cart__ , the ability of adding or removig product to cart, easy purchase
 + __context processors__ in orders
 + payments with __Zarinpal__ for orders
++ __discount coupon__ and field lookups
 
 
 
