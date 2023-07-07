@@ -21,6 +21,8 @@ _project overview_:
 + payments with __Zarinpal__ for orders
 + __discount coupon__ and field lookups
 + override *get_form* func for admin panel
++ cache system with __Redis__ 
+
 
 
 
