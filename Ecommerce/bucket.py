@@ -33,11 +33,8 @@ class Bucket:
         """
     
     def get_object_list(self):
-        l = []
-        for obj in self.bucket.objects.all():
-            l.append(obj)
-        return l
-    
+        return [obj for obj in self.bucket.objects.all()]
+        
     def delete_object(self, object_key):
         object = self.bucket.Object(object_key)
         object.delete()
